@@ -15,9 +15,9 @@ $email    = $_POST['email'];
 $phone   = $_POST['phone'];
 $select_price   = $_POST['select_price'];
 $select_service   = $_POST['select_service'];
-$subject  = isset($_POST['subject']) ? trim($_POST['subject']) : 'Quote';
-$comments = isset($_POST['comments']) ? trim($_POST['comments']) : 'N/A';
-$verify   = isset($_POST['verify']) ? $_POST['verify'] : 1;
+$subject  = $_POST['subject'];
+$comments = $_POST['comments'];
+$verify   = $_POST['verify'];
 
 if(trim($first_name) == '') {
 	echo '<div class="error_message">Attention! You must enter your name.</div>';
@@ -45,7 +45,7 @@ if(get_magic_quotes_gpc()) {
 // Example $address = "joe.doe@yourdomain.com";
 
 //$address = "example@themeforest.net";
-$address = "bathivinod24@gmail.com";
+$address = "example@yourdomain.com";
 
 
 // Configuration option.
@@ -71,14 +71,6 @@ $headers .= "Reply-To: $email" . PHP_EOL;
 $headers .= "MIME-Version: 1.0" . PHP_EOL;
 $headers .= "Content-type: text/plain; charset=utf-8" . PHP_EOL;
 $headers .= "Content-Transfer-Encoding: quoted-printable" . PHP_EOL;
-
-// ini_set("SMTP","ssl://smtp.gmail.com");
-// ini_set("smtp_port","465");
-
-ini_set("SMTP","tls://smtp.gmail.com");
-ini_set("smtp_port","587");
-
-ini_set('sendmail_from', $email);
 
 if(mail($address, $e_subject, $msg, $headers)) {
 
